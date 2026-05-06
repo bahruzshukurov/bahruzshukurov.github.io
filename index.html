@@ -55,60 +55,34 @@
         nav a {
             color: var(--text-secondary); font-family: 'IBM Plex Mono', monospace;
             font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em;
-            transition: 0.3s;
+            transition: 0.3s; cursor: pointer;
         }
 
         nav a:hover { color: var(--accent-cyan); }
 
         .lang-container {
-            position: fixed;
-            top: 5rem; 
-            right: 1.5rem;
-            z-index: 101;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
+            position: fixed; top: 5rem; right: 1.5rem; z-index: 101;
+            display: flex; flex-direction: column; gap: 0.6rem;
         }
 
         .lang-btn {
-            cursor: pointer;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem;
-            width: 38px;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            background: rgba(15, 25, 56, 0.8);
-            color: var(--text-secondary);
-            border: 1px solid var(--border-color);
-            transition: 0.3s;
-            backdrop-filter: blur(5px);
+            cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+            width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+            border-radius: 4px; background: rgba(15, 25, 56, 0.8); color: var(--text-secondary);
+            border: 1px solid var(--border-color); transition: 0.3s; backdrop-filter: blur(5px);
         }
 
         .lang-btn.active-btn {
-            background: var(--primary-blue);
-            color: #0a0e27;
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 12px rgba(0, 153, 255, 0.3);
-            font-weight: bold;
+            background: var(--primary-blue); color: #0a0e27; border-color: var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(0, 153, 255, 0.3); font-weight: bold;
         }
 
-        .lang-btn:hover:not(.active-btn) {
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-        }
-
-        .lang-content { display: none; opacity: 0; transition: 0.5s; }
-        .lang-content.active { display: block; opacity: 1; }
+        .lang-content { display: none; opacity: 0; }
+        .lang-content.active { display: block; opacity: 1; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         header { padding: 8rem 2rem 4rem; text-align: center; position: relative; z-index: 10; }
-        
-        .profile-wrapper {
-            position: relative; width: 180px; height: 180px; margin: 0 auto 2rem;
-        }
-
+        .profile-wrapper { position: relative; width: 180px; height: 180px; margin: 0 auto 2rem; }
         .profile-img {
             width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
             border: 3px solid var(--primary-blue); box-shadow: 0 0 30px rgba(0, 153, 255, 0.3);
@@ -120,25 +94,16 @@
             border-radius: 50%; background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
             z-index: 1; opacity: 0.5; filter: blur(8px); animation: pulse 3s infinite;
         }
-
         @keyframes pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.05); } }
 
         section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; position: relative; z-index: 10; }
 
-        .card {
-            background: rgba(15, 25, 56, 0.7); border: 1px solid var(--border-color);
-            padding: 2.5rem; border-radius: 12px; transition: 0.3s;
-        }
+        .card { background: rgba(15, 25, 56, 0.7); border: 1px solid var(--border-color); padding: 2.5rem; border-radius: 12px; }
 
-        .expertise-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem; margin-top: 2rem;
-        }
-
+        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
         .expertise-item {
             background: rgba(0, 153, 255, 0.05); border: 1px solid rgba(0, 153, 255, 0.15);
-            padding: 1.2rem; border-radius: 6px; font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.9rem; transition: 0.3s;
+            padding: 1.2rem; border-radius: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem;
         }
 
         .tech-tag {
@@ -148,54 +113,35 @@
         }
 
         .contact-card {
-            display: flex; align-items: center; gap: 1rem; 
-            padding: 1.5rem; background: rgba(0, 153, 255, 0.05);
-            border: 1px solid var(--border-color); border-radius: 8px; transition: 0.3s;
-            text-decoration: none;
+            display: flex; align-items: center; gap: 1rem; padding: 1.5rem;
+            background: rgba(0, 153, 255, 0.05); border: 1px solid var(--border-color); border-radius: 8px;
+            text-decoration: none; transition: 0.3s;
         }
 
-        /* GİZLİLİK BANNERI (ALT UYARI) */
+        /* Gizlilik Banner Stili */
         #privacy-banner {
-            position: fixed; bottom: 0; left: 0; width: 100%;
-            background: rgba(15, 25, 56, 0.98);
-            border-top: 1px solid var(--accent-cyan);
-            padding: 1rem 2rem; z-index: 1000;
-            display: flex; justify-content: center; align-items: center; gap: 2rem;
-            backdrop-filter: blur(15px);
-            animation: slideUp 0.5s ease-out;
+            position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(15, 25, 56, 0.98);
+            border-top: 1px solid var(--accent-cyan); padding: 1rem 2rem; z-index: 1000;
+            display: flex; justify-content: center; align-items: center; gap: 2rem; backdrop-filter: blur(15px);
         }
-        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-
-        .banner-text { font-size: 0.85rem; color: var(--text-primary); font-family: 'IBM Plex Mono', monospace; }
-
         .banner-btn {
-            background: var(--primary-blue); color: #0a0e27;
-            padding: 0.4rem 1.5rem; border-radius: 4px; font-weight: bold;
-            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
-            transition: 0.3s; cursor: pointer; border: none;
-        }
-        .banner-btn:hover { background: var(--accent-cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); }
-
-        /* FOOTERDAKİ SABİT YAZI */
-        .privacy-footer-note {
-            font-size: 0.7rem; color: var(--text-secondary); margin-top: 3rem; 
-            font-family: 'IBM Plex Mono', monospace; opacity: 0.7;
+            background: var(--primary-blue); color: #0a0e27; padding: 0.4rem 1.5rem;
+            border-radius: 4px; font-weight: bold; font-family: 'IBM Plex Mono', monospace; cursor: pointer;
         }
 
         .typewriter-cursor {
-            display: inline-block; width: 2px; height: 1.2em;
-            background: var(--accent-cyan); margin-left: 4px;
-            animation: blink 1s infinite; vertical-align: middle;
+            display: inline-block; width: 2px; height: 1.2em; background: var(--accent-cyan);
+            margin-left: 4px; animation: blink 1s infinite; vertical-align: middle;
         }
         @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 
-        footer { text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.85rem; }
+        footer { text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border-color); color: var(--text-secondary); }
     </style>
 </head>
 <body>
 
 <nav class="px-6 py-4 flex justify-center gap-8 md:gap-12">
-    <a href="#about" id="nav-bio">Bio</a>
+    <a href="#about-anchor" id="nav-bio">Bio</a>
     <a href="#expertise" id="nav-expertise">Fachgebiete</a>
     <a href="#tools" id="nav-tools">Tools</a>
     <a href="#contact" id="nav-contact">Kontakt</a>
@@ -207,7 +153,7 @@
     <button class="lang-btn" data-lang="az">AZ</button>
 </div>
 
-<!-- GİZLİLİK UYARI BANNERI -->
+<!-- Gizlilik Bannerı -->
 <div id="privacy-banner">
     <span class="banner-text" id="ui-banner-text">> Diese Website verwendet keine Cookies.</span>
     <button class="banner-btn" onclick="closePrivacyBanner()">OK</button>
@@ -216,58 +162,54 @@
 <header>
     <div class="profile-wrapper">
         <div class="profile-glow"></div>
-        <img src="profile.jpg" alt="Bahruz Shukurov" class="profile-img" 
-             onerror="this.onerror=null; this.src='profile.jpg.jpg'; if(!this.src) this.src='profile.JPEG';">
+        <img src="profile.jpg" alt="Bahruz Shukurov" class="profile-img" onerror="this.src='https://via.placeholder.com/180'">
     </div>
     <h1 class="font-bold tracking-tighter" style="font-size: clamp(2rem, 8vw, 4rem); background: linear-gradient(135deg, #0099ff 0%, #00f0ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bahruz Shukurov</h1>
     <p id="ui-role" class="subtitle mt-4" style="color: var(--primary-blue); letter-spacing: 0.2em; font-weight: 600; text-transform: uppercase; font-size: 0.9rem;">Cybersecurity Specialist</p>
     <div style="margin-top: 2rem;">
-        <span class="mono" style="color: var(--text-secondary);">
-            &gt; <span id="typewriter"></span><span class="typewriter-cursor"></span>
-        </span>
+        <span class="mono" style="color: var(--text-secondary);">&gt; <span id="typewriter"></span><span class="typewriter-cursor"></span></span>
     </div>
 </header>
 
-<div class="lang-content active" id="de">
-    <section id="about">
+<!-- Ortak Çapa Noktası -->
+<div id="about-anchor" style="position: relative; top: -100px;"></div>
+
+<!-- DEUTSCH CONTENT -->
+<div class="lang-content active" id="content-de">
+    <section>
         <h2 style="color: var(--accent-cyan); font-size: 1.75rem;">Über Mich</h2>
         <div class="card mt-8 leading-relaxed">
             <p class="mb-4">Mein Weg in die Welt der Cybersicherheit verlief vielleicht nicht direkt, aber diese Reise entsprang meinem tiefen Interesse am Schutz digitaler Infrastrukturen. Mein Bachelor-Abschluss in Wirtschaftswissenschaften und meine Erfahrungen im Banken- und Logistiksektor haben mir die Fähigkeit verliehen, komplexe Daten zu analysieren und in Krisenmomenten kühle Entscheidungen zu treffen.</p>
-            <p>Indem ich diese analytische Denkweise mit meinem technischen Fachwissen kombiniöbere, bin ich heute in der Lage, „Gefahrenspuren“ in Logdateien aufzuspüren, potenzielle Bedrohungen zu erkennen, bevor sie Schaden anrichten, und Incident-Response-Prozesse zu steuern. Durch den effektiven Einsatz von SIEM-, EDR- und OSINT-Tools schütze ich Systeme und mache sie resilient gegen zukünftige Bedrohungen. Mein Ziel ist es, die Möglichkeiten der Technologie zu nutzen, um einen zuverlässigen digitalen Schutzschild für Organisationen zu schaffen.</p>
+            <p>Indem ich diese analytische Denkweise mit meinem technischen Fachwissen kombiniere, bin ich heute in der Lage, „Gefahrenspuren“ in Logdateien aufzuspüren, potenzielle Bedrohungen zu erkennen, bevor sie Schaden anrichten, und Incident-Response-Prozesse zu steuern.</p>
         </div>
     </section>
 </div>
 
-<div class="lang-content" id="en">
-    <section id="about">
+<!-- ENGLISH CONTENT -->
+<div class="lang-content" id="content-en">
+    <section>
         <h2 style="color: var(--accent-cyan); font-size: 1.75rem;">About Me</h2>
         <div class="card mt-8 leading-relaxed">
             <p class="mb-4">My entry into the world of cybersecurity may not have been direct, but this journey was born out of a deep interest in protecting digital infrastructures. Completing my bachelor's degree in economics and gaining experience in the banking and logistics sectors provided me with the ability to analyze complex data and make calm decisions in moments of crisis.</p>
-            <p>By combining this analytical mindset with my technical expertise, I am now able to search for "threat traces" in log files, detect potential threats before they cause damage, and execute incident response processes. Using SIEM, EDR, and OSINT tools effectively, I protect systems and make them resilient against future threats. My goal is to use the possibilities of technology to create a reliable digital shield for organizations.</p>
+            <p>By combining this analytical mindset with my technical expertise, I am now able to search for "threat traces" in log files, detect potential threats before they cause damage, and execute incident response processes.</p>
         </div>
     </section>
 </div>
 
-<div class="lang-content" id="az">
-    <section id="about">
+<!-- AZERBAIJANI CONTENT -->
+<div class="lang-content" id="content-az">
+    <section>
         <h2 style="color: var(--accent-cyan); font-size: 1.75rem;">Haqqımda</h2>
         <div class="card mt-8 leading-relaxed">
             <p class="mb-4">Mənim kiber təhlükəsizlik dünyasına gəlişim bəlkə birbaşa olmayıb, lakin bu yolçuluq rəqəmsal infrastrukturu qorumaq üçün duyduğum dərin maraqdan doğub. Bakalavr təhsilimi iqtisadiyyat sahəsində tamamlamağım və bank-logistika sektorlarında qazandığım təcrübə mənə mürəkkəb dataları təhlil etmək və böhran anlarında soyuqqanlı qərarlar vermək bacarığı qazandırıb.</p>
-            <p>Hazırda bu analitik düşüncə tərzini texniki biliklərimlə birləşdirərək, loq faylları arasında "təhlükə izlərini" axtara, potensial təhdidləri hələ zərər vermədən aşkarlaya və insidentlərin idarə olunması proseslərini həyata keçirə bilirəm. SIEM, EDR və OSINT alətlərini effektiv şəkildə istifadə edərək sistemləri qorumaq və onları gələcək təhdidlərə karşı dayanıqlı etmək bacarığına sahibəm. Məqsədim texnologiyanın imkanlarından istifadə edərək təşkilatlar üçün etibarlı rəqəmsal qalxan yaratmaqdır.</p>
+            <p>Hazırda bu analitik düşüncə tərzini texniki biliklərimlə birləşdirərək, loq faylları arasında "təhlükə izlərini" axtara, potensial təhdidləri hələ zərər vermədən aşkarlaya və insidentlərin idarə olunması proseslərini həyata keçirə bilirəm.</p>
         </div>
     </section>
 </div>
 
 <section id="expertise">
     <h2 id="ui-expertise-title" style="color: var(--accent-cyan); font-size: 1.75rem;">Fachgebiete</h2>
-    <div class="expertise-grid">
-        <div class="expertise-item">Incident Detection & Response</div>
-        <div class="expertise-item">SIEM Management & Monitoring</div>
-        <div class="expertise-item">Vulnerability Management</div>
-        <div class="expertise-item">Threat Intelligence & OSINT</div>
-        <div class="expertise-item">Log Analysis & Forensics</div>
-        <div class="expertise-item">Network Security</div>
-    </div>
+    <div class="expertise-grid" id="expertise-list"></div>
 </section>
 
 <section id="tools">
@@ -287,17 +229,11 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
         <a href="mailto:bahruz.sh@gmail.com" class="contact-card">
             <div style="color: #ea4335;"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-            <div>
-                <p style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase;">Email</p>
-                <p style="font-weight: 600; color: var(--text-primary);">bahruz.sh@gmail.com</p>
-            </div>
+            <div><p style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase;">Email</p><p style="font-weight: 600;">bahruz.sh@gmail.com</p></div>
         </a>
         <a href="https://linkedin.com/in/bahruz-shukurov" target="_blank" class="contact-card">
             <div style="color: #0077b5;"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></div>
-            <div>
-                <p style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase;">LinkedIn</p>
-                <p style="font-weight: 600; color: var(--text-primary);" id="ui-linkedin-btn">Profil ansehen</p>
-            </div>
+            <div><p style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase;">LinkedIn</p><p style="font-weight: 600;" id="ui-linkedin-btn">Profil ansehen</p></div>
         </a>
     </div>
 </section>
@@ -305,39 +241,67 @@
 <footer>
     <p class="mono mb-2"><span style="color: var(--primary-blue);">BAHRUZ_SHUKUROV</span> // v2026.05</p>
     <p class="mb-4">📍 Berlin, Germany</p>
-    
-    <p class="privacy-footer-note" id="ui-privacy-footer">
-        Diese Website verwendet keine Cookies und sammelt keine personenbezogenen Daten.
-    </p>
+    <p class="privacy-footer-note text-xs opacity-50" id="ui-privacy-footer">Diese Website verwendet keine Cookies.</p>
 </footer>
 
 <script>
-    const langBtns = document.querySelectorAll('.lang-btn');
-    const langContents = document.querySelectorAll('.lang-content');
-
     const uiTranslations = {
         "de": { 
             "nav-bio": "Bio", "nav-expertise": "Fachgebiete", "nav-tools": "Tools", "nav-contact": "Kontakt",
             "ui-expertise-title": "Fachgebiete", "ui-role": "Cybersecurity Specialist", 
             "ui-tools-title": "Tools & Technologien", "ui-contact-title": "Kontakt", "ui-linkedin-btn": "Profil ansehen",
             "ui-banner-text": "> Diese Website verwendet keine Cookies.",
-            "ui-privacy-footer": "Diese Website verwendet keine Cookies und sammelt keine personenbezogenen Daten."
+            "ui-privacy-footer": "Diese Website verwendet keine Cookies ve sammelt keine personenbezogenen Daten.",
+            "skills": ["Incident Detection & Response", "SIEM Management & Monitoring", "Schwachstellenmanagement", "Threat Intelligence & OSINT", "Log-Analyse & Forensik", "Netzwerksicherheit"]
         },
         "en": { 
             "nav-bio": "Bio", "nav-expertise": "Expertise", "nav-tools": "Tools", "nav-contact": "Contact",
             "ui-expertise-title": "Areas of Expertise", "ui-role": "Cybersecurity Specialist", 
             "ui-tools-title": "Tools & Technologies", "ui-contact-title": "Connect", "ui-linkedin-btn": "View Profile",
             "ui-banner-text": "> This website does not use cookies.",
-            "ui-privacy-footer": "This website does not use cookies and does not collect any personal data."
+            "ui-privacy-footer": "This website does not use cookies and does not collect any personal data.",
+            "skills": ["Incident Detection & Response", "SIEM Management & Monitoring", "Vulnerability Management", "Threat Intelligence & OSINT", "Log Analysis & Forensics", "Network Security"]
         },
         "az": { 
             "nav-bio": "Haqqımda", "nav-expertise": "İxtisaslar", "nav-tools": "Alətlər", "nav-contact": "Əlaqə",
             "ui-expertise-title": "İxtisas Sahələri", "ui-role": "Kiber Təhlükəsizlik Mütəxəssisi", 
             "ui-tools-title": "Alətlər və Texnologiyalar", "ui-contact-title": "Əlaqə", "ui-linkedin-btn": "Profilə Bax",
             "ui-banner-text": "> Bu veb-sayt kukilərdən istifadə etmir.",
-            "ui-privacy-footer": "Bu veb-sayt kukilərdən istifadə etmir və heç bir şəxsi məlumat toplamır."
+            "ui-privacy-footer": "Bu veb-sayt kukilərdən istifadə etmir və heç bir şəxsi məlumat toplamır.",
+            "skills": ["İnsidentlərin Aşkarlanması və Cavablandırılması", "SIEM İdarəetməsi və Monitorinq", "Zəifliklərin İdarə Edilməsi", "Təhdid Kəşfiyyatı və OSINT", "Loq Analizi və Rəqəmsal Ekspertiza", "Şəbəkə Təhlükəsizliyi"]
         }
     };
+
+    function updateSkills(lang) {
+        const list = document.getElementById('expertise-list');
+        list.innerHTML = uiTranslations[lang].skills.map(s => `<div class="expertise-item">${s}</div>`).join('');
+    }
+
+    const langBtns = document.querySelectorAll('.lang-btn');
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            langBtns.forEach(b => b.classList.remove('active-btn'));
+            btn.classList.add('active-btn');
+            
+            document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(`content-${lang}`).classList.add('active');
+            
+            const trans = uiTranslations[lang];
+            for (let id in trans) { 
+                const el = document.getElementById(id);
+                if(el) el.textContent = trans[id]; 
+            }
+            updateSkills(lang);
+            startTypewriter(lang);
+        });
+    });
+
+    function closePrivacyBanner() {
+        const banner = document.getElementById('privacy-banner');
+        banner.style.transform = 'translateY(100%)';
+        setTimeout(() => banner.remove(), 500);
+    }
 
     const typewriterMessages = {
         "de": ["Sicherheitsereignisse analysieren...", "Digitale Infrastrukturen schützen...", "Cybersecurity in Berlin..."],
@@ -346,54 +310,27 @@
     };
 
     let typeIndex = 0; let charIndex = 0; let typeInterval;
-
     function startTypewriter(lang) {
         clearInterval(typeInterval);
         charIndex = 0;
         let messages = typewriterMessages[lang];
         let currentText = messages[typeIndex % messages.length];
         document.getElementById("typewriter").innerHTML = "";
-        
         typeInterval = setInterval(() => {
             if (charIndex < currentText.length) {
                 document.getElementById("typewriter").innerHTML += currentText.charAt(charIndex);
                 charIndex++;
             } else {
                 clearInterval(typeInterval);
-                setTimeout(() => { 
-                    typeIndex++; 
-                    startTypewriter(lang); 
-                }, 4000); 
+                setTimeout(() => { typeIndex++; startTypewriter(lang); }, 3000);
             }
-        }, 100);
+        }, 80);
     }
 
-    function closePrivacyBanner() {
-        const banner = document.getElementById('privacy-banner');
-        banner.style.transition = '0.5s';
-        banner.style.transform = 'translateY(100%)';
-        setTimeout(() => banner.remove(), 500);
-    }
-
-    langBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const lang = btn.getAttribute('data-lang');
-            langBtns.forEach(b => b.classList.remove('active-btn'));
-            btn.classList.add('active-btn');
-            langContents.forEach(c => c.classList.remove('active'));
-            document.getElementById(lang).classList.add('active');
-            
-            const trans = uiTranslations[lang];
-            for (let id in trans) { 
-                const el = document.getElementById(id);
-                if(el) el.textContent = trans[id]; 
-            }
-            
-            typeIndex = 0; startTypewriter(lang);
-        });
-    });
-
-    window.onload = () => startTypewriter("de");
+    window.onload = () => {
+        updateSkills('de');
+        startTypewriter('de');
+    };
 </script>
 </body>
 </html>

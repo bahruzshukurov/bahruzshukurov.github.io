@@ -82,6 +82,42 @@
         .lang-content.active { display: block; opacity: 1; }
 
         header { padding: 8rem 2rem 4rem; text-align: center; position: relative; z-index: 10; }
+        
+        /* Profile Image Styles */
+        .profile-wrapper {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 2rem;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-blue);
+            box-shadow: 0 0 30px rgba(0, 153, 255, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-glow {
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+            z-index: 1;
+            opacity: 0.5;
+            filter: blur(8px);
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
         section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; position: relative; z-index: 10; }
 
         .card {
@@ -146,6 +182,10 @@
 
 <!-- Header -->
 <header>
+    <div class="profile-wrapper">
+        <div class="profile-glow"></div>
+        <img src="profile.jpg" alt="Bahruz Shukurov" class="profile-img">
+    </div>
     <h1 class="font-bold tracking-tighter" style="font-size: clamp(2rem, 8vw, 4rem); background: linear-gradient(135deg, #0099ff 0%, #00f0ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bahruz Shukurov</h1>
     <p id="ui-role" class="subtitle mt-4" style="color: var(--primary-blue); letter-spacing: 0.2em; font-weight: 600; text-transform: uppercase; font-size: 0.9rem;">Cybersecurity Specialist | SOC Analyst</p>
     <div style="margin-top: 2rem;">
@@ -330,9 +370,9 @@
                 setTimeout(() => { 
                     typeIndex++; 
                     startTypewriter(lang); 
-                }, 4000); // Yazı bittiğinde 4 saniye bekle
+                }, 4000); 
             }
-        }, 100); // Yazma hızı: 100ms (Yavaş ve akıcı)
+        }, 100);
     }
 
     langBtns.forEach(btn => {

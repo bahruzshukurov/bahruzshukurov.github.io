@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bahruz Shukurov | Cybersecurity Specialist & SOC Analyst</title>
+    <title>Bahruz Shukurov | Cybersecurity Specialist</title>
     
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -61,20 +61,43 @@
         nav a:hover { color: var(--accent-cyan); }
 
         .lang-container {
-            position: fixed; top: 1rem; right: 1.5rem;
-            z-index: 101; display: flex; gap: 0.5rem;
+            position: fixed;
+            top: 5rem; 
+            right: 1.5rem;
+            z-index: 101;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
         }
 
         .lang-btn {
-            cursor: pointer; font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.75rem; padding: 0.4rem 0.8rem; border-radius: 4px;
-            background: rgba(0, 153, 255, 0.05); color: var(--text-secondary);
-            border: 1px solid var(--border-color); transition: 0.3s;
+            cursor: pointer;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            background: rgba(15, 25, 56, 0.8);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
         }
 
         .lang-btn.active-btn {
-            background: var(--primary-blue); color: #0a0e27;
-            box-shadow: 0 0 20px rgba(0, 153, 255, 0.4);
+            background: var(--primary-blue);
+            color: #0a0e27;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(0, 153, 255, 0.3);
+            font-weight: bold;
+        }
+
+        .lang-btn:hover:not(.active-btn) {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
         }
 
         .lang-content { display: none; opacity: 0; transition: 0.5s; }
@@ -83,39 +106,22 @@
         header { padding: 8rem 2rem 4rem; text-align: center; position: relative; z-index: 10; }
         
         .profile-wrapper {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 2rem;
+            position: relative; width: 180px; height: 180px; margin: 0 auto 2rem;
         }
 
         .profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary-blue);
-            box-shadow: 0 0 30px rgba(0, 153, 255, 0.3);
-            position: relative;
-            z-index: 2;
-            background: var(--card-bg); /* Resim yüklenene kadar boş kalmasın */
+            width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+            border: 3px solid var(--primary-blue); box-shadow: 0 0 30px rgba(0, 153, 255, 0.3);
+            position: relative; z-index: 2; background: var(--card-bg);
         }
 
         .profile-glow {
-            position: absolute;
-            top: -5px; left: -5px; right: -5px; bottom: -5px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
-            z-index: 1;
-            opacity: 0.5;
-            filter: blur(8px);
-            animation: pulse 3s infinite;
+            position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border-radius: 50%; background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+            z-index: 1; opacity: 0.5; filter: blur(8px); animation: pulse 3s infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-        }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.05); } }
 
         section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; position: relative; z-index: 10; }
 
@@ -135,8 +141,6 @@
             font-size: 0.9rem; transition: 0.3s;
         }
 
-        .expertise-item:hover { border-color: var(--accent-cyan); background: rgba(0, 153, 255, 0.1); }
-
         .tech-tag {
             display: inline-block; padding: 0.5rem 1rem; margin: 0.3rem;
             border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 4px;
@@ -150,7 +154,33 @@
             text-decoration: none;
         }
 
-        .contact-card:hover { border-color: var(--accent-cyan); transform: translateY(-3px); background: rgba(0, 153, 255, 0.1); }
+        /* GİZLİLİK BANNERI (ALT UYARI) */
+        #privacy-banner {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: rgba(15, 25, 56, 0.98);
+            border-top: 1px solid var(--accent-cyan);
+            padding: 1rem 2rem; z-index: 1000;
+            display: flex; justify-content: center; align-items: center; gap: 2rem;
+            backdrop-filter: blur(15px);
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+        .banner-text { font-size: 0.85rem; color: var(--text-primary); font-family: 'IBM Plex Mono', monospace; }
+
+        .banner-btn {
+            background: var(--primary-blue); color: #0a0e27;
+            padding: 0.4rem 1.5rem; border-radius: 4px; font-weight: bold;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+            transition: 0.3s; cursor: pointer; border: none;
+        }
+        .banner-btn:hover { background: var(--accent-cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); }
+
+        /* FOOTERDAKİ SABİT YAZI */
+        .privacy-footer-note {
+            font-size: 0.7rem; color: var(--text-secondary); margin-top: 3rem; 
+            font-family: 'IBM Plex Mono', monospace; opacity: 0.7;
+        }
 
         .typewriter-cursor {
             display: inline-block; width: 2px; height: 1.2em;
@@ -177,15 +207,20 @@
     <button class="lang-btn" data-lang="az">AZ</button>
 </div>
 
+<!-- GİZLİLİK UYARI BANNERI -->
+<div id="privacy-banner">
+    <span class="banner-text" id="ui-banner-text">> Diese Website verwendet keine Cookies.</span>
+    <button class="banner-btn" onclick="closePrivacyBanner()">OK</button>
+</div>
+
 <header>
     <div class="profile-wrapper">
         <div class="profile-glow"></div>
-        <!-- Resim Hatası Çözümü: 3 Farklı ihtimali de deniyoruz -->
         <img src="profile.jpg" alt="Bahruz Shukurov" class="profile-img" 
              onerror="this.onerror=null; this.src='profile.jpg.jpg'; if(!this.src) this.src='profile.JPEG';">
     </div>
     <h1 class="font-bold tracking-tighter" style="font-size: clamp(2rem, 8vw, 4rem); background: linear-gradient(135deg, #0099ff 0%, #00f0ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bahruz Shukurov</h1>
-    <p id="ui-role" class="subtitle mt-4" style="color: var(--primary-blue); letter-spacing: 0.2em; font-weight: 600; text-transform: uppercase; font-size: 0.9rem;">Cybersecurity Specialist | SOC Analyst</p>
+    <p id="ui-role" class="subtitle mt-4" style="color: var(--primary-blue); letter-spacing: 0.2em; font-weight: 600; text-transform: uppercase; font-size: 0.9rem;">Cybersecurity Specialist</p>
     <div style="margin-top: 2rem;">
         <span class="mono" style="color: var(--text-secondary);">
             &gt; <span id="typewriter"></span><span class="typewriter-cursor"></span>
@@ -198,19 +233,7 @@
         <h2 style="color: var(--accent-cyan); font-size: 1.75rem;">Über Mich</h2>
         <div class="card mt-8 leading-relaxed">
             <p class="mb-4">Mein Weg in die Welt der Cybersicherheit verlief vielleicht nicht direkt, aber diese Reise entsprang meinem tiefen Interesse am Schutz digitaler Infrastrukturen. Mein Bachelor-Abschluss in Wirtschaftswissenschaften und meine Erfahrungen im Banken- und Logistiksektor haben mir die Fähigkeit verliehen, komplexe Daten zu analysieren und in Krisenmomenten kühle Entscheidungen zu treffen.</p>
-            <p>Indem ich diese analytische Denkweise mit meinem technischen Fachwissen kombiniere, bin ich heute in der Lage, „Gefahrenspuren“ in Logdateien aufzuspüren, potenzielle Bedrohungen zu erkennen, bevor sie Schaden anrichten, und Incident-Response-Prozesse zu steuern. Durch den effektiven Einsatz von SIEM-, EDR- und OSINT-Tools schütze ich Systeme und mache sie resilient gegen zukünftige Bedrohungen. Mein Ziel ist es, die Möglichkeiten der Technologie zu nutzen, um einen zuverlässigen digitalen Schutzschild für Organisationen zu schaffen.</p>
-        </div>
-    </section>
-
-    <section id="expertise">
-        <h2 style="color: var(--accent-cyan); font-size: 1.75rem;">Fachgebiete</h2>
-        <div class="expertise-grid">
-            <div class="expertise-item">Incident Detection & Response</div>
-            <div class="expertise-item">SIEM Management & Monitoring</div>
-            <div class="expertise-item">Schwachstellenmanagement</div>
-            <div class="expertise-item">Threat Intelligence & OSINT</div>
-            <div class="expertise-item">Log-Analyse & Forensik</div>
-            <div class="expertise-item">Netzwerksicherheit</div>
+            <p>Indem ich diese analytische Denkweise mit meinem technischen Fachwissen kombiniöbere, bin ich heute in der Lage, „Gefahrenspuren“ in Logdateien aufzuspüren, potenzielle Bedrohungen zu erkennen, bevor sie Schaden anrichten, und Incident-Response-Prozesse zu steuern. Durch den effektiven Einsatz von SIEM-, EDR- und OSINT-Tools schütze ich Systeme und mache sie resilient gegen zukünftige Bedrohungen. Mein Ziel ist es, die Möglichkeiten der Technologie zu nutzen, um einen zuverlässigen digitalen Schutzschild für Organisationen zu schaffen.</p>
         </div>
     </section>
 </div>
@@ -223,18 +246,6 @@
             <p>By combining this analytical mindset with my technical expertise, I am now able to search for "threat traces" in log files, detect potential threats before they cause damage, and execute incident response processes. Using SIEM, EDR, and OSINT tools effectively, I protect systems and make them resilient against future threats. My goal is to use the possibilities of technology to create a reliable digital shield for organizations.</p>
         </div>
     </section>
-
-    <section id="expertise">
-        <h2 style="color: var(--accent-cyan); font-size: 1.75rem;">Areas of Expertise</h2>
-        <div class="expertise-grid">
-            <div class="expertise-item">Incident Detection & Response</div>
-            <div class="expertise-item">SIEM Management & Monitoring</div>
-            <div class="expertise-item">Vulnerability Management</div>
-            <div class="expertise-item">Threat Intelligence & OSINT</div>
-            <div class="expertise-item">Log Analysis & Forensics</div>
-            <div class="expertise-item">Network Security</div>
-        </div>
-    </section>
 </div>
 
 <div class="lang-content" id="az">
@@ -245,19 +256,19 @@
             <p>Hazırda bu analitik düşüncə tərzini texniki biliklərimlə birləşdirərək, loq faylları arasında "təhlükə izlərini" axtara, potensial təhdidləri hələ zərər vermədən aşkarlaya və insidentlərin idarə olunması proseslərini həyata keçirə bilirəm. SIEM, EDR və OSINT alətlərini effektiv şəkildə istifadə edərək sistemləri qorumaq və onları gələcək təhdidlərə karşı dayanıqlı etmək bacarığına sahibəm. Məqsədim texnologiyanın imkanlarından istifadə edərək təşkilatlar üçün etibarlı rəqəmsal qalxan yaratmaqdır.</p>
         </div>
     </section>
-
-    <section id="expertise">
-        <h2 style="color: var(--accent-cyan); font-size: 1.75rem;">İxtisas Sahələri</h2>
-        <div class="expertise-grid">
-            <div class="expertise-item">İnsidentlərin Aşkarlanması və Cavablandırılması</div>
-            <div class="expertise-item">SIEM İdarəetməsi və Monitorinq</div>
-            <div class="expertise-item">Zəifliklərin İdarə Edilməsi</div>
-            <div class="expertise-item">Təhdid Kəşfiyyatı və OSINT</div>
-            <div class="expertise-item">Loq Analizi və Forensika</div>
-            <div class="expertise-item">Şəbəkə Təhlükəsizliyi</div>
-        </div>
-    </section>
 </div>
+
+<section id="expertise">
+    <h2 id="ui-expertise-title" style="color: var(--accent-cyan); font-size: 1.75rem;">Fachgebiete</h2>
+    <div class="expertise-grid">
+        <div class="expertise-item">Incident Detection & Response</div>
+        <div class="expertise-item">SIEM Management & Monitoring</div>
+        <div class="expertise-item">Vulnerability Management</div>
+        <div class="expertise-item">Threat Intelligence & OSINT</div>
+        <div class="expertise-item">Log Analysis & Forensics</div>
+        <div class="expertise-item">Network Security</div>
+    </div>
+</section>
 
 <section id="tools">
     <h2 id="ui-tools-title" style="color: var(--accent-cyan); font-size: 1.75rem;">Tools & Technologien</h2>
@@ -271,7 +282,7 @@
     </div>
 </section>
 
-<section id="contact" class="pb-32">
+<section id="contact" class="pb-16">
     <h2 id="ui-contact-title" style="color: var(--accent-cyan); font-size: 1.75rem;">Kontakt</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
         <a href="mailto:bahruz.sh@gmail.com" class="contact-card">
@@ -294,6 +305,10 @@
 <footer>
     <p class="mono mb-2"><span style="color: var(--primary-blue);">BAHRUZ_SHUKUROV</span> // v2026.05</p>
     <p class="mb-4">📍 Berlin, Germany</p>
+    
+    <p class="privacy-footer-note" id="ui-privacy-footer">
+        Diese Website verwendet keine Cookies und sammelt keine personenbezogenen Daten.
+    </p>
 </footer>
 
 <script>
@@ -301,27 +316,33 @@
     const langContents = document.querySelectorAll('.lang-content');
 
     const uiTranslations = {
-        "de": {
+        "de": { 
             "nav-bio": "Bio", "nav-expertise": "Fachgebiete", "nav-tools": "Tools", "nav-contact": "Kontakt",
-            "ui-role": "Cybersecurity Specialist | SOC Analyst", "ui-tools-title": "Tools & Technologien",
-            "ui-contact-title": "Kontakt", "ui-linkedin-btn": "Profil ansehen"
+            "ui-expertise-title": "Fachgebiete", "ui-role": "Cybersecurity Specialist", 
+            "ui-tools-title": "Tools & Technologien", "ui-contact-title": "Kontakt", "ui-linkedin-btn": "Profil ansehen",
+            "ui-banner-text": "> Diese Website verwendet keine Cookies.",
+            "ui-privacy-footer": "Diese Website verwendet keine Cookies und sammelt keine personenbezogenen Daten."
         },
-        "en": {
-            "nav-bio": "Bio", "nav-expertise": "Areas of Expertise", "nav-tools": "Tools", "nav-contact": "Contact",
-            "ui-role": "Cybersecurity Specialist | SOC Analyst", "ui-tools-title": "Tools & Technologies",
-            "ui-contact-title": "Connect", "ui-linkedin-btn": "View Profile"
+        "en": { 
+            "nav-bio": "Bio", "nav-expertise": "Expertise", "nav-tools": "Tools", "nav-contact": "Contact",
+            "ui-expertise-title": "Areas of Expertise", "ui-role": "Cybersecurity Specialist", 
+            "ui-tools-title": "Tools & Technologies", "ui-contact-title": "Connect", "ui-linkedin-btn": "View Profile",
+            "ui-banner-text": "> This website does not use cookies.",
+            "ui-privacy-footer": "This website does not use cookies and does not collect any personal data."
         },
-        "az": {
-            "nav-bio": "Haqqımda", "nav-expertise": "İxtisas Sahələri", "nav-tools": "Alətlər", "nav-contact": "Əlaqə",
-            "ui-role": "Kiber Təhlükəsizlik Mütəxəssisi | SOC Analitiki", "ui-tools-title": "Alətlər və Texnologiyalar",
-            "ui-contact-title": "Əlaqə", "ui-linkedin-btn": "Profilə Bax"
+        "az": { 
+            "nav-bio": "Haqqımda", "nav-expertise": "İxtisaslar", "nav-tools": "Alətlər", "nav-contact": "Əlaqə",
+            "ui-expertise-title": "İxtisas Sahələri", "ui-role": "Kiber Təhlükəsizlik Mütəxəssisi", 
+            "ui-tools-title": "Alətlər və Texnologiyalar", "ui-contact-title": "Əlaqə", "ui-linkedin-btn": "Profilə Bax",
+            "ui-banner-text": "> Bu veb-sayt kukilərdən istifadə etmir.",
+            "ui-privacy-footer": "Bu veb-sayt kukilərdən istifadə etmir və heç bir şəxsi məlumat toplamır."
         }
     };
 
     const typewriterMessages = {
-        "de": ["Sicherheitsereignisse analysieren...", "Digitale Infrastrukturen schützen...", "SOC Analyst in Berlin..."],
-        "en": ["Analyzing security events...", "Securing digital assets...", "SOC Analyst based in Berlin..."],
-        "az": ["Kiber təhdidləri təhlil edirəm...", "Rəqəmsal qalxan yaradıram...", "Berlin SOC Analitiki..."]
+        "de": ["Sicherheitsereignisse analysieren...", "Digitale Infrastrukturen schützen...", "Cybersecurity in Berlin..."],
+        "en": ["Analyzing security events...", "Securing digital assets...", "Cybersecurity based in Berlin..."],
+        "az": ["Kiber təhdidləri təhlil edirəm...", "Rəqəmsal qalxan yaradıram...", "Berlin Kiber Təhlükəsizlik..."]
     };
 
     let typeIndex = 0; let charIndex = 0; let typeInterval;
@@ -345,6 +366,13 @@
                 }, 4000); 
             }
         }, 100);
+    }
+
+    function closePrivacyBanner() {
+        const banner = document.getElementById('privacy-banner');
+        banner.style.transition = '0.5s';
+        banner.style.transform = 'translateY(100%)';
+        setTimeout(() => banner.remove(), 500);
     }
 
     langBtns.forEach(btn => {
